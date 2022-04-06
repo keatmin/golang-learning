@@ -12,9 +12,13 @@ import (
 
 ## Chapter 1
 ### Chapter 1.1
+- `go build helloworld.go` to build the binary to run using `./helloworld` in the future
+- Alternatively run `go run helloworld.go` to run the file without compiling
 - `gofmt` should be run when save because go takes a strong stance on code formatting
+- Program will not compile if there are missing imports or if there are uneccesarry ones.
 
 ### Chapter 1.2 
+- 
 - `:=` symbol is part of a short variable declaration. Giving them appropriate types based on initializer values
 - `i++` is +1, `i--` is minus 1. 
 
