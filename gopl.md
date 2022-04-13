@@ -53,6 +53,9 @@ var s string
 var s = ""
 var s string = ""
 ```
+The first form can only be used in a function.
+The second form relies on default initialization to zero value. 
+The third form is rarely used when declaring multiple variables
 
 - An easier way to iterate through and concatenatingo
 ```go
@@ -79,3 +82,6 @@ for line, n := range counts {
   }
 }
 ```
+
+- Parentheses are not used for if statements but braces are required. 
+- `make` is a built-in function to create a new map but has other uses too. 
