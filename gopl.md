@@ -85,3 +85,45 @@ for line, n := range counts {
 
 - Parentheses are not used for if statements but braces are required. 
 - `make` is a built-in function to create a new map but has other uses too. 
+- Printf() formats the string without adding new lines. The same pattern for functions when it's log.Printf() or fmt.Errorf(). Same pattern can be observed for Println(), where a new line is created. 
+- `err` is usually returned in a function, if `err` is `nil` then the function returns successfully
+
+Types of verbs in go that is used for conversions:
+```
+%d decimal integer
+%x, %o, %b integer in hexadecimal, octal, binary
+%f, %g, %e floating point number
+%t boolean
+%c rune
+%s string
+%q quoted string "abc"
+%v any value in a natural format
+%T type of any value
+%% literal percent design
+```
+
+### Chapter 1.5
+[Fetch](gopl/ch1/fetch.go)
+- `net` package make it easy to send and receie information through the internet, make low-level network connections, setup servers. 
+- `fetch` is used to fetch content of URL, inspired by `curl` 
+
+- Function call `io.Copy(dst, src)` reads from src and writes to dst. Using this instead of ioutil.ReadAll to copy response body to os.Stdout without requiring a buffer large enough to hold the entire stream. Always check for err.
+- Use `strings.HasPrefix` to see if a string has a specific prefix
+- `resp.status` also prints the HTTP status code
+
+### Chapter 1.6
+[FetchAll](gopl/ch1/fetchall.go)
+- `goroutine` is concurrent function execution. 
+- `channel` is a communication mechanism that allows one goroutine to pass values of a specified type to another goroutine
+- `go` statement creates additional goroutines. 
+
+```
+“When one goroutine attempts a send or receive on a channel, it blocks until another goroutine attempts the corresponding receive or send operation, at which point the value is transferred and both goroutines proceed”
+
+Excerpt From: Brian W. Kernighan. “The Go Programming Language (Addison-Wesley Professional Computing Series)”
+```
+### Chapter 1.7
+[Server1](gopl/ch1/server1.go)
+[Server2](gopl/ch1/server2.go)
+[Server3](gopl/ch1/server3.go)
+- Using `sync.Mutex` to Lock and Unlock to ensure one goroutine can access variable one at a time 
