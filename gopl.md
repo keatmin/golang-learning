@@ -1,6 +1,6 @@
 ## GOPL
 
-```go 
+```go
 // Package comment to describe the package before declaring package
 package main
 
@@ -17,17 +17,17 @@ import (
 - `gofmt` should be run when save because go takes a strong stance on code formatting
 - Program will not compile if there are missing imports or if there are uneccesarry ones.
 
-### Chapter 1.2 
-- 
+### Chapter 1.2
+-
 - `:=` symbol is part of a short variable declaration. Giving them appropriate types based on initializer values
-- `i++` is +1, `i--` is minus 1. 
+- `i++` is +1, `i--` is minus 1.
 
-- for loop comes in the form of: 
+- for loop comes in the form of:
 ```go
 for initialization; condition; post {
-  // statement 
+  // statement
   // parentheses are never used around the three components of for loop
-  // initialization is optional and usually a short statement 
+  // initialization is optional and usually a short statement
   // loop runs when condition is true
 }
 ```
@@ -46,7 +46,7 @@ for condition {
   }
 ```
 
-- Use one of the first 2 forms as others are redundant. Explicit  initialization when initial value matters and implicit when initial value doesn't 
+- Use one of the first 2 forms as others are redundant. Explicit  initialization when initial value matters and implicit when initial value doesn't
 ```go
 s := ""
 var s string
@@ -54,12 +54,12 @@ var s = ""
 var s string = ""
 ```
 The first form can only be used in a function.
-The second form relies on default initialization to zero value. 
+The second form relies on default initialization to zero value.
 The third form is rarely used when declaring multiple variables
 
 - An easier way to iterate through and concatenatingo
 ```go
-strings.Join(os.Args[1:], "") 
+strings.Join(os.Args[1:], "")
 ```
 
 - os.Args[0] is the name of the program
@@ -83,9 +83,9 @@ for line, n := range counts {
 }
 ```
 
-- Parentheses are not used for if statements but braces are required. 
-- `make` is a built-in function to create a new map but has other uses too. 
-- Printf() formats the string without adding new lines. The same pattern for functions when it's log.Printf() or fmt.Errorf(). Same pattern can be observed for Println(), where a new line is created. 
+- Parentheses are not used for if statements but braces are required.
+- `make` is a built-in function to create a new map but has other uses too.
+- Printf() formats the string without adding new lines. The same pattern for functions when it's log.Printf() or fmt.Errorf(). Same pattern can be observed for Println(), where a new line is created.
 - `err` is usually returned in a function, if `err` is `nil` then the function returns successfully
 
 Types of verbs in go that is used for conversions:
@@ -104,8 +104,8 @@ Types of verbs in go that is used for conversions:
 
 ### Chapter 1.5
 [Fetch](gopl/ch1/fetch.go)
-- `net` package make it easy to send and receie information through the internet, make low-level network connections, setup servers. 
-- `fetch` is used to fetch content of URL, inspired by `curl` 
+- `net` package make it easy to send and receie information through the internet, make low-level network connections, setup servers.
+- `fetch` is used to fetch content of URL, inspired by `curl`
 
 - Function call `io.Copy(dst, src)` reads from src and writes to dst. Using this instead of ioutil.ReadAll to copy response body to os.Stdout without requiring a buffer large enough to hold the entire stream. Always check for err.
 - Use `strings.HasPrefix` to see if a string has a specific prefix
@@ -113,9 +113,9 @@ Types of verbs in go that is used for conversions:
 
 ### Chapter 1.6
 [FetchAll](gopl/ch1/fetchall.go)
-- `goroutine` is concurrent function execution. 
+- `goroutine` is concurrent function execution.
 - `channel` is a communication mechanism that allows one goroutine to pass values of a specified type to another goroutine
-- `go` statement creates additional goroutines. 
+- `go` statement creates additional goroutines.
 
 ```
 “When one goroutine attempts a send or receive on a channel, it blocks until another goroutine attempts the corresponding receive or send operation, at which point the value is transferred and both goroutines proceed”
@@ -126,7 +126,7 @@ Excerpt From: Brian W. Kernighan. “The Go Programming Language (Addison-Wesley
 [Server1](gopl/ch1/server1.go)
 [Server2](gopl/ch1/server2.go)
 [Server3](gopl/ch1/server3.go)
-- Using `sync.Mutex` to Lock and Unlock to ensure one goroutine can access variable one at a time 
+- Using `sync.Mutex` to Lock and Unlock to ensure one goroutine can access variable one at a time
 - Go allows local variable declaration to precede if condition
 ```golang
 err := r.ParseForm()
@@ -160,14 +160,35 @@ switch flipcoin() {
 ```golang
 func bla(x int) int {
   switch {
-    case x > 0: 
+    case x > 0:
       return +1
     default:
       return 0
-    case x < 0: 
+    case x < 0:
       return -1
   }
 }
 ```
 - `pointers` “The & operator yields the address of a variable, and the * operator retrieves”
 
+## Chapter 2
+- If the name begins with an upper-cased letter, it is exported. i.e `fmt.Println`
+- Go convention lean towards short names, especially with local variables with small scope. The larger the scope the more verbose the name is. `CamelCase`
+### Chapter 2.2 - Declarations
+- “The name of each package-level entity is visible not only throughout the source file that contains its declaration, but throughout all the files of the package”
+
+### Chapter 2.3 - Variables
+- Variable has this general form
+```golang
+var name type = expression
+```
+- either the `type` or the `= expression` can be omitted but not both. If expression is omitted the initial value is the zero value for the type, `0 for numbers`, `false for boolean`, `"" for strings`, and `nil for interfaces and reference types (slices, pointer, map, channel, function)`
+- Go programmers usually make zero value of a complicated type meaningful
+```golang
+var a,b,c int // int, int, int
+var a,b,c = 1,true, "hey"
+```
+- Package-level variables are initialized before main begins
+#### Chapter 2.3.1 - Short Variable Declarations
+- `:=` used to declare and initialize local variables
+- A `var` declaration tends to be reserved for local variables that need an explicit type that differs from that of the initializer expression, or for when the variable will be assigned a value later and its initial value is unimportant
