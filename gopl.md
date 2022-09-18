@@ -127,3 +127,47 @@ Excerpt From: Brian W. Kernighan. “The Go Programming Language (Addison-Wesley
 [Server2](gopl/ch1/server2.go)
 [Server3](gopl/ch1/server3.go)
 - Using `sync.Mutex` to Lock and Unlock to ensure one goroutine can access variable one at a time 
+- Go allows local variable declaration to precede if condition
+```golang
+err := r.ParseForm()
+if err != nil {
+  bla
+}
+```
+can be instead be written as such reduces the scope of `err`
+```golang
+if err := r.ParseForm(); err != nil {
+  bla
+}
+```
+
+### Chapter 1.8
+- Switch statement evaluate results from top to bottom
+```golang
+switch flipcoin() {
+  case "heads":
+    heads++
+  case "tails":
+    tails++
+  default:
+    fmt.Println("landed on edge")
+  }
+}
+```
+- default case matches if none of the other does; it may be placed anywhere.
+
+`switch` can be used without an operand as such, a `tagless switch`
+```golang
+func bla(x int) int {
+  switch {
+    case x > 0: 
+      return +1
+    default:
+      return 0
+    case x < 0: 
+      return -1
+  }
+}
+```
+- `pointers` “The & operator yields the address of a variable, and the * operator retrieves”
+
