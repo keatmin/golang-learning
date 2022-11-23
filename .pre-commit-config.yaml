@@ -23,4 +23,3 @@ repos:
       - id: go-fmt
         args:
           - "-w"
-      - id: go-vet
