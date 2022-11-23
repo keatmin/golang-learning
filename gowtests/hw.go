@@ -10,8 +10,12 @@ func Hello(name, lang string) string {
 	if name == "" {
 		name = "World!"
 	}
-	prefix := englishHelloPrefix
+	prefix := mapPrefix(lang)
 
+	return prefix + name
+}
+
+func mapPrefix(lang string) (prefix string) { // private functions are in lowercase named return will create prefix variable with "" and be returning prefix
 	switch lang {
 
 	case "Spanish":
@@ -19,9 +23,11 @@ func Hello(name, lang string) string {
 
 	case "French":
 		prefix = frenchHelloPrefix
-	}
 
-	return prefix + name
+	default:
+		prefix = englishHelloPrefix
+	}
+	return
 }
 
 func main() {
