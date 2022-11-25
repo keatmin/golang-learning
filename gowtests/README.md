@@ -1,0 +1,10 @@
+# GO with tests
+## Hello World
+1. Write a test
+2. Make the compiler pass
+3. Run the test, see that it fails and check the error message is meaningful
+4. Write enough code to make the test pass
+5. Refactor
+
+## Arr
+1. Question value of tests because tests have cost.
