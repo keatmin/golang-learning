@@ -11,6 +11,11 @@ type Circle struct {
 	Radius float64
 }
 
+type Triangle struct {
+	Base   float64
+	Height float64
+}
+
 type Shape interface {
 	Area() float64
 }
@@ -25,4 +30,8 @@ func (r Rectangle) Area() float64 { // receiver variable to be first letter of t
 
 func (c Circle) Area() float64 { // method can be used instead of declaring a separate package to allow Area() to be defined again
 	return math.Pi * c.Radius * c.Radius
+}
+
+func (t Triangle) Area() float64 { // method can be used instead of declaring a separate package to allow Area() to be defined again
+	return 0.5 * t.Base * t.Height
 }
