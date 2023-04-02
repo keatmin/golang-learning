@@ -13,3 +13,7 @@
 1. Question value of tests because tests have cost.
 2. `go test -cover` to see coverage
 3. Making a copy of a slice from another slice helps with garbage collection of a bigger array
+
+
+## Pointers
+1. If you see a function that takes arguments or returns values that are interfaces, they can be nillable. `Error` is an interface
