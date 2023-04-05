@@ -17,7 +17,7 @@ func (w *Wallet) Deposit(amount Bitcoin) { // In golang method arguments are cop
 
 func (w *Wallet) Withdraw(amount Bitcoin) error { // In golang method arguments are copied hence pointers are used to update by pointing at the value
 	if amount > w.balance {
-		return errors.New("oh no")
+		return errors.New("cannot withdraw, insufficient fund")
 	}
 
 	w.balance -= amount
