@@ -17,3 +17,6 @@
 
 ## Pointers
 1. If you see a function that takes arguments or returns values that are interfaces, they can be nillable. `Error` is an interface
+2. Pointers can be `nil` so it's important to check if they are `nil` when a function/method returns one
+3. Important to use pointers to mutate state or not make too many copies of large data
+4. [ Handle error gracefully ](https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully)
