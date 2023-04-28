@@ -20,3 +20,21 @@
 2. Pointers can be `nil` so it's important to check if they are `nil` when a function/method returns one
 3. Important to use pointers to mutate state or not make too many copies of large data
 4. [ Handle error gracefully ](https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully)
+
+## Maps
+1. Use err.Error() to get string of err
+2. t.Fatal() will exit and stop, useful to avoid panic in the next steps
+3. An interesting property of maps is that you can modify them without passing as an address to it (e.g &myMap)
+4. A `nil` map behaves like an empty `nil` but attempting to write to a `nil` map will cause a panic. Never initialize an empty map variable
+```golang
+var m map[string]string
+```
+
+initialize an empty map like below
+```golang
+var dictionary = map[string]string{}
+
+// OR
+
+var dictionary = make(map[string]string)
+```
