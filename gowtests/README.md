@@ -38,3 +38,4 @@ var dictionary = map[string]string{}
 
 var dictionary = make(map[string]string)
 ```
+5. Make errors a `const`, and implements own `Err` type with `Error()` interface. [ This is why ](https://dave.cheney.net/2016/04/07/constant-errors)
