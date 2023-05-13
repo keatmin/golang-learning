@@ -49,3 +49,4 @@ var dictionary = make(map[string]string)
 1. backtick syntax allows us to create string but includes newline
 2. `i--` to loop backwards for `post statement` in `for statement`
 3. when time.Sleep is added test will take 3s to run, quick feedback loop is needed and slow test ruins productivity
+4. Spies are a kind of mock which can record how a dependency is used. They can record the arguments sent in, how many times it has been called, etc.
