@@ -50,3 +50,11 @@ var dictionary = make(map[string]string)
 2. `i--` to loop backwards for `post statement` in `for statement`
 3. when time.Sleep is added test will take 3s to run, quick feedback loop is needed and slow test ruins productivity
 4. Spies are a kind of mock which can record how a dependency is used. They can record the arguments sent in, how many times it has been called, etc.
+
+5. If refactoring causes a lot of tests to be changed, it's a sign of testing too much implementation details. Try to test for behaviour.
+
+6. When writing a test, consider whether the test tests for behaviour or the implementation details? if the code needs to be refactored, does the test have to change?
+```text
+Although Go lets you test private functions, I would avoid it as private functions are implementation detail to support public behaviour. Test the public behaviour. Sandi Metz describes private functions as being "less stable" and you don't want to couple your tests to them.
+```
+7. When faced with less trivial examples, break the problem down into "thin vertical slices". Try to get to a point where you have working software backed by tests as soon as you can, to avoid getting in rabbit holes and taking a "big bang" approach.
