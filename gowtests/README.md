@@ -44,6 +44,7 @@ var dictionary = make(map[string]string)
 ## Dependency Injection
 1. Both bytes.Buffer and os.Stdout implements io.Writer
 2. Understanding general purposes interface can software reusable in a number of contexts
+3. Essentially separating concern of the construction of an object
 
 ### WHY DI
 Motivated by our tests we refactored the code so we could control where the data was written by injecting a dependency which allowed us to:
