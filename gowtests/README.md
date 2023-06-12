@@ -59,7 +59,7 @@ Motivated by our tests we refactored the code so we could control where the data
 3. when time.Sleep is added test will take 3s to run, quick feedback loop is needed and slow test ruins productivity
 4. Spies are a kind of mock which can record how a dependency is used. They can record the arguments sent in, how many times it has been called, etc.
 
-5. If refactoring causes a lot of tests to be changed, it's a sign of testing too much implementation details. Try to test for behaviour.
+5. If refactoring causes a lot of tests to be changed, it's a sign of testing too much implementation details. Try to test for behavior.
 
 6. When writing a test, consider whether the test tests for behaviour or the implementation details? if the code needs to be refactored, does the test have to change?
 ```text
@@ -69,4 +69,18 @@ Although Go lets you test private functions, I would avoid it as private functio
 
 ## Concurrency
 1.`()` at the end of `go` statement is so that func is executed at the same time they are declared
-2. Maps in go don't like more than 1 thing trying to write to them at once. `Concurrent map writes` is the fatal error. This is a `race condition`. When output of software depends on timing and sequence of events
+2. Maps in go don't like more than 1 thing trying to write to them at once. `Concurrent map writes` is the fatal error. This is a `race condition`. When output of software depends on timing and sequence of events that we have no control over
+3. `go test -race` to test for rest condition. To avoid race condition in concurrency, use channel
+4. Make it work, make it right, make it fast. Pass the test, refactor, make it fast
+### Channel
+1. Channels are a Go data structure that can both receive and send values. This allows comms between processes.
+2. Send statement is takes a channel on the left and value on the right
+```go
+// Send statement
+resultChannel <- result{u, wc(u)}
+```
+3. To receive, channel on the right and receiever on the left
+```go
+// Receive expression
+r := <-resultChannel
+```
