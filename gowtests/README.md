@@ -84,3 +84,7 @@ resultChannel <- result{u, wc(u)}
 // Receive expression
 r := <-resultChannel
 ```
+
+## select
+1. time.Since(time) to get duration
+2. stdlib `net/http/httptest` enables user to mock HTTP server
