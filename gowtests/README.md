@@ -24,7 +24,7 @@
 ## Maps
 1. Use `err.Error()` to get string of err
 2. t.Fatal() will exit and stop, useful to avoid panic in the next steps
-3. An interesting property of maps is that you can modify them without passing as an address to it (e.g `&myMap`)
+3. An interesting property of maps is that you can modify them without passing as an address to it (e.g. `&myMap`)
 4. A `nil` map behaves like an empty `nil` but attempting to write to a `nil` map will cause a panic. Never initialize an empty map variable
 ```golang
 var m map[string]string
@@ -47,10 +47,10 @@ var dictionary = make(map[string]string)
 3. Essentially separating concern of the construction of an object
 
 ### WHY DI
-Motivated by our tests we refactored the code so we could control where the data was written by injecting a dependency which allowed us to:
+Motivated by our tests we refactored the code, so we could control where the data was written by injecting a dependency which allowed us to:
 
-- **Test our code** If you can't test a function easily, it's usually because of dependencies hard-wired into a function or global state. If you have a global database connection pool for instance that is used by some kind of service layer, it is likely going to be difficult to test and they will be slow to run. DI will motivate you to inject in a database dependency (via an interface) which you can then mock out with something you can control in your tests.
-- **Separate our concerns**, decoupling where the data goes from how to generate it. If you ever feel like a method/function has too many responsibilities (generating data and writing to a db? handling HTTP requests and doing domain level logic?) DI is probably going to be the tool you need.
+- **Test our code** If you can't test a function easily, it's usually because of dependencies hard-wired into a function or global state. If you have a global database connection pool for instance that is used by some kind of service layer, it is likely going to be difficult to test,and they will be slow to run. DI will motivate you to inject in a database dependency (via an interface) which you can then mock out with something you can control in your tests.
+- **Separate our concerns**, decoupling where the data goes from how to generate it. If you ever feel like a method/function has too many responsibilities (generating data and writing to a db? Handling HTTP requests and doing domain level logic?) DI is probably going to be the tool you need.
 - **Allow our code to be re-used in different contexts** The first "new" context our code can be used in is inside tests. But further on if someone wants to try something new with your function they can inject their own dependencies.
 
 ## Mocking
@@ -61,7 +61,7 @@ Motivated by our tests we refactored the code so we could control where the data
 
 5. If refactoring causes a lot of tests to be changed, it's a sign of testing too much implementation details. Try to test for behavior.
 
-6. When writing a test, consider whether the test tests for behaviour or the implementation details? if the code needs to be refactored, does the test have to change?
+6. When writing a test, consider whether the test tests for behavior or the implementation details? If the code needs to be refactored, does the test have to change?
 ```text
 Although Go lets you test private functions, I would avoid it as private functions are implementation detail to support public behaviour. Test the public behaviour. Sandi Metz describes private functions as being "less stable" and you don't want to couple your tests to them.
 ```
@@ -79,7 +79,7 @@ Although Go lets you test private functions, I would avoid it as private functio
 // Send statement
 resultChannel <- result{u, wc(u)}
 ```
-3. To receive, channel on the right and receiever on the left
+3. To receive, channel on the right and receiver on the left
 ```go
 // Receive expression
 r := <-resultChannel
