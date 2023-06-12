@@ -17,14 +17,14 @@
 
 ## Pointers
 1. If you see a function that takes arguments or returns values that are interfaces, they can be nillable. `Error` is an interface
-2. Pointers can be `nil` so it's important to check if they are `nil` when a function/method returns one
+2. Pointers can be `nil`, so it's important to check if they are `nil` when a function/method returns one
 3. Important to use pointers to mutate state or not make too many copies of large data
 4. [ Handle error gracefully ](https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully)
 
 ## Maps
-1. Use err.Error() to get string of err
+1. Use `err.Error()` to get string of err
 2. t.Fatal() will exit and stop, useful to avoid panic in the next steps
-3. An interesting property of maps is that you can modify them without passing as an address to it (e.g &myMap)
+3. An interesting property of maps is that you can modify them without passing as an address to it (e.g `&myMap`)
 4. A `nil` map behaves like an empty `nil` but attempting to write to a `nil` map will cause a panic. Never initialize an empty map variable
 ```golang
 var m map[string]string
@@ -43,7 +43,7 @@ var dictionary = make(map[string]string)
 
 ## Dependency Injection
 1. Both bytes.Buffer and os.Stdout implements io.Writer
-2. Understanding general purposes interface can software reusable in a number of contexts
+2. Understanding general purposes interface can make software reusable in a number of contexts
 3. Essentially separating concern of the construction of an object
 
 ### WHY DI
@@ -66,3 +66,7 @@ Motivated by our tests we refactored the code so we could control where the data
 Although Go lets you test private functions, I would avoid it as private functions are implementation detail to support public behaviour. Test the public behaviour. Sandi Metz describes private functions as being "less stable" and you don't want to couple your tests to them.
 ```
 7. When faced with less trivial examples, break the problem down into "thin vertical slices". Try to get to a point where you have working software backed by tests as soon as you can, to avoid getting in rabbit holes and taking a "big bang" approach.
+
+## Concurrency
+1.`()` at the end of `go` statement is so that func is executed at the same time they are declared
+2. Maps in go don't like more than 1 thing trying to write to them at once. `Concurrent map writes` is the fatal error. This is a `race condition`. When output of software depends on timing and sequence of events
